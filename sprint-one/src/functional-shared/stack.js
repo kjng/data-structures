@@ -15,8 +15,8 @@ var stackMethods = {
     this.numberOfItems++;
   },
   pop: function() {
-    var deletedValue = this.storage[this.numberOfItems-1];
-    delete this.storage[this.numberOfItems-1];
+    var deletedValue = this.storage[this.numberOfItems - 1];
+    delete this.storage[this.numberOfItems - 1];
     this.numberOfItems--;
     return deletedValue;
   },
