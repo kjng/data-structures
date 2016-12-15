@@ -3,11 +3,9 @@ var Queue = function() {
   // but try not not reference your old code in writing the new style.
   var obj = {
     numberOfItems: 0,
-    counter: 0,
-    keys: [],
     storage: {}
   };
-  Object.assign(obj, queueMethods);
+  _.extend(obj, queueMethods);
   return obj;
 };
 
@@ -18,17 +16,21 @@ queueMethods.size = function() {
 };
 
 queueMethods.enqueue = function(value) {
-  this.storage[this.counter] = value;
-  this.keys.push('' + this.counter);
+  this.storage[this.numberOfItems] = value;
   this.numberOfItems ++;
-  this.counter ++;
 };
 
 queueMethods.dequeue = function() {
-  if (this.numberOfItems !== 0) {
-    var deletedKey = this.keys.shift();
-    var deletedItem = this.storage[deletedKey];
-    delete this.storage[deletedKey];
+  if (this.numberOfItems > 0) {
+    var deletedItem = this.storage['0'];
+    delete this.storage['0'];
+
+    var counter = 0;
+    for (var key in this.storage) {
+      this.storage[counter] = this.storage[key];
+      counter ++;
+    }
+
     this.numberOfItems --;
     return deletedItem;
   }
