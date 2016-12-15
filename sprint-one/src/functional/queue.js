@@ -4,25 +4,27 @@ var Queue = function() {
   // Use an object with numeric keys to store values
   var storage = {};
   var size = 0;
-  var key = 0;
   // Implement the methods below
 
   someInstance.enqueue = function(value) {
     //create property with size as key, value as value
-    storage[key] = value;
-    key++;
-    size++;
+    storage[size] = value;
+    size ++;
   };
 
   someInstance.dequeue = function() {
     // remove property from storage
     if (size > 0) {
-      var deletedValue = storage[Object.keys(storage)[0]];
-      //if (deletedValue === 'b') {
-      //  debugger;
-      //}
-      delete storage[Object.keys(storage)[0]];
-      size--;
+      var deletedValue = storage['0'];
+      delete storage['0'];
+
+      var counter = 0;
+      for (var key in storage) {
+        storage[counter] = storage[key];
+        counter ++;
+      }
+
+      size --;
       return deletedValue;
     }
   };
