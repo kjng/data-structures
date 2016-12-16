@@ -8,12 +8,14 @@ var LinkedList = function() {
     // create new instance of node under var new node
     var newNode = Node(value);
 
-    var traverseList = function(node) {
-      if (node.next !== null) {
-        traverseList(node.next);
-      }
-      node.next = newNode;
-    };
+    // if head is null, set head to node in list
+    if (list.head === null) {
+      list.head = newNode;
+    }
+
+    if (list.tail) {
+      list.tail.next = newNode;
+    }
 
     // assign node to list
     list[list.counter] = newNode;
@@ -21,14 +23,6 @@ var LinkedList = function() {
 
     // assign tail to node in list
     list.tail = newNode;
-
-    // if head is null, set head to node in list
-    if (list.head === null) {
-      list.head = newNode;
-    }
-    if (list.head !== newNode) {
-      traverseList(list.head);
-    }
   };
 
   list.removeHead = function() {
