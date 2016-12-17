@@ -24,3 +24,11 @@ Stack.prototype.pop = function() {
     return 'Error: Stack is empty';
   }
 };
+
+Stack.prototype.getStack = function() {
+  var stack = [];
+  for (var i = 0; i < this.amount; i ++) {
+    stack.push(this.storage[i]);
+  }
+  return stack;
+};

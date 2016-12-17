@@ -31,3 +31,11 @@ Queue.prototype.dequeue = function() {
     return 'Error: Queue is empty';
   }
 };
+
+Queue.prototype.getQueue = function() {
+  var queue = [];
+  for (var i = 0; i < this.amount; i++) {
+    queue.push(this.storage[i]);
+  }
+  return queue;
+};
