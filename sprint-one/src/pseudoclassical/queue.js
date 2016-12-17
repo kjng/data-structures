@@ -27,5 +27,7 @@ Queue.prototype.dequeue = function() {
 
     this.amount--;
     return deletedValue;
+  } else {
+    return 'Error: Queue is empty';
   }
 };

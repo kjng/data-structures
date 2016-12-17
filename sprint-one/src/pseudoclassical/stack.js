@@ -20,5 +20,7 @@ Stack.prototype.pop = function() {
     delete this.storage[this.amount - 1];
     this.amount --;
     return deletedValue;
+  } else {
+    return 'Error: Stack is empty';
   }
 };

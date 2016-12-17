@@ -85,6 +85,13 @@ define([
         stack.pop();
         expect(stack.pop()).to.equal('b');
       });
+
+      if (variant === 'pseudoclassical') {
+        it('should return "Error: Stack is empty" when popping from an empty stack', function() {
+          expect(stack.pop()).to.equal('Error: Stack is empty');
+        });
+      }
+
     });
 
   });
@@ -157,6 +164,13 @@ define([
         queue.enqueue('c');
         expect(queue.dequeue()).to.equal('b');
       });
+
+      if (variant === 'pseudoclassical') {
+        it('should return "Error: Queue is empty" when dequeuing from an empty queue', function() {
+          expect(queue.dequeue()).to.equal('Error: Queue is empty');
+        });
+      }
+
     });
 
   });
