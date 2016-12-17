@@ -9,11 +9,12 @@ var LinkedList = function() {
     var newNode = Node(value);
 
     // if head is null, set head to node in list
-    if (list.head === null) {
+    if (!list.head) {
       list.head = newNode;
     }
 
     if (list.tail) {
+      newNode.prev = list.tail;
       list.tail.next = newNode;
     }
 
@@ -27,10 +28,10 @@ var LinkedList = function() {
 
   list.removeHead = function() {
     var removedValue = list.head.value;
-    // if head has next
     if (list.head.next) {
       // assign next to head
       list.head = list.head.next;
+      list.head.prev = null;
     } else {
       list.head = null;
     }
@@ -48,12 +49,21 @@ var LinkedList = function() {
   };
 
   return list;
+
+  // addToHead
+    // create newNode
+    // assign newNode.prev to null
+    // save reference to old head
+    // assign newNode to list.head
+    // assign old head to newNode.next
+    // assign old head.prev to newNode
 };
 
 var Node = function(value) {
   var node = {};
 
   node.value = value;
+  node.prev = null;
   node.next = null;
 
   return node;

@@ -56,4 +56,14 @@ describe('linkedList', function() {
     linkedList.removeHead();
     expect(linkedList.head).to.equal(null);
   });
+
+  it('should add value to front of list', function() {
+    linkedList.addToTail(1);
+    linkedList.addToTail(2);
+    linkedList.addToTail(3);
+    linkedList.addToHead(4);
+    expect(linkedList.head).to.equal(4);
+    expect(linkedList.head.next).to.equal(1);
+    expect(linkedList.head.prev).to.equal(null);
+  });
 });
