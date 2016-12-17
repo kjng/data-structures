@@ -56,6 +56,14 @@ var LinkedList = function() {
     oldHead.prev = newNode;
   };
 
+  list.removeTail = function() {
+    var deletedNodeValue = list.tail.value;
+    var previousNode = list.tail.prev;
+    previousNode.next = null;
+    list.tail = previousNode;
+    return deletedNodeValue;
+  };
+
   return list;
 };
 

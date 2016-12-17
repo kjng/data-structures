@@ -66,4 +66,12 @@ describe('linkedList', function() {
     expect(linkedList.head.next.value).to.equal(1);
     expect(linkedList.head.prev).to.equal(null);
   });
+
+  it('should remove value at end of list and return it', function() {
+    linkedList.addToTail(1);
+    linkedList.addToTail(2);
+    linkedList.addToTail(3);
+    expect(linkedList.removeTail()).to.equal(3);
+    expect(linkedList.tail.value).to.equal(2);
+  });
 });
