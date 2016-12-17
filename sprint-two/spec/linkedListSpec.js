@@ -74,4 +74,13 @@ describe('linkedList', function() {
     expect(linkedList.removeTail()).to.equal(3);
     expect(linkedList.tail.value).to.equal(2);
   });
+
+  it('should insert a node between two nodes', function() {
+    linkedList.addToTail(1);
+    linkedList.addToTail(3);
+    linkedList.insert(1, 2);
+    expect(linkedList.contains(2)).to.equal(true);
+    expect(linkedList.head.value).to.equal(1);
+    expect(linkedList.tail.value).to.equal(3);
+  });
 });

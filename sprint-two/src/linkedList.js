@@ -64,6 +64,24 @@ var LinkedList = function() {
     return deletedNodeValue;
   };
 
+  // search takes target, node
+    // set node to be node or list.head
+    // if nodeValue is target
+      // return node
+    // else if nodeNext
+      // return listSearch(target, node.next)
+    // else return undefined
+
+  // insert takes a targetNodeValue and newValue
+    // create newNode with value
+    // look through list to find targetNodeValue
+      // if found, save node
+        // save node's next node
+    // set targetNode's next value to newNode
+    // set newNode's next value to be targetNode's next old value
+    // set newNode's prev to be targetNode
+    // set targetNode's old next's prev to be newNode
+
   return list;
 };
 
