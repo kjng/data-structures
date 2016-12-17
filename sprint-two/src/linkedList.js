@@ -48,15 +48,15 @@ var LinkedList = function() {
     return false;
   };
 
-  return list;
+  list.addToHead = function(value) {
+    var newNode = Node(value);
+    var oldHead = list.head;
+    newNode.next = oldHead;
+    list.head = newNode;
+    oldHead.prev = newNode;
+  };
 
-  // addToHead
-    // create newNode
-    // assign newNode.prev to null
-    // save reference to old head
-    // assign newNode to list.head
-    // assign old head to newNode.next
-    // assign old head.prev to newNode
+  return list;
 };
 
 var Node = function(value) {

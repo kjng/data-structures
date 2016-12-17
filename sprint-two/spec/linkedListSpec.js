@@ -62,8 +62,8 @@ describe('linkedList', function() {
     linkedList.addToTail(2);
     linkedList.addToTail(3);
     linkedList.addToHead(4);
-    expect(linkedList.head).to.equal(4);
-    expect(linkedList.head.next).to.equal(1);
+    expect(linkedList.head.value).to.equal(4);
+    expect(linkedList.head.next.value).to.equal(1);
     expect(linkedList.head.prev).to.equal(null);
   });
 });
