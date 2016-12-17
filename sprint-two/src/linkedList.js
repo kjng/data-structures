@@ -26,26 +26,25 @@ var LinkedList = function() {
   };
 
   list.removeHead = function() {
-    var removedNode = list.head;
+    var removedValue = list.head.value;
     // if head has next
     if (list.head.next) {
       // assign next to head
       list.head = list.head.next;
+    } else {
+      list.head = null;
     }
-    return removedNode.value;
+    return removedValue;
   };
 
-  list.contains = function(target) {
-    var traverseList = function(node) {
-      if (node.value === target) {
-        return true;
-      } else if (node.next !== null) {
-        return traverseList(node.next);
-      }
-      return false;
-    };
-
-    return traverseList(list.head);
+  list.contains = function(target, node) {
+    node = node || list.head;
+    if (node.value === target) {
+      return true;
+    } else if (node.next) {
+      return list.contains(target, node.next);
+    }
+    return false;
   };
 
   return list;
