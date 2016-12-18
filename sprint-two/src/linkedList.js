@@ -38,14 +38,9 @@ var LinkedList = function() {
     return removedValue;
   };
 
-  list.contains = function(target, node) {
-    node = node || list.head;
-    if (node.value === target) {
-      return true;
-    } else if (node.next) {
-      return list.contains(target, node.next);
-    }
-    return false;
+  list.contains = function(target) {
+    var found = list.search(target);
+    return found ? true : false;
   };
 
   list.addToHead = function(value) {
@@ -64,26 +59,31 @@ var LinkedList = function() {
     return deletedNodeValue;
   };
 
+  list.search = function(target, node) {
+    node = node || list.head;
+    if (node.value === target) {
+      return node;
+    } else if (node.next) {
+      return list.search(target, node.next);
+    }
+    return null;
+  };
+
   list.insert = function(targetNodeValue, newValue) {
     var newNode = Node(newValue);
-    var foundNode, nextNode;
-    var search = function(target, node) {
-      node = node || list.head;
-      if (node.value === target) {
-        foundNode = node;
-        return;
-      } else if (node.next) {
-        search(target, node.next);
+    var nextNode;
+    var foundNode = list.search(targetNodeValue);
+    if (foundNode) {
+      if (foundNode.next) {
+        nextNode = foundNode.next;
       }
-    };
-    search(targetNodeValue);
-    if (foundNode.next) {
-      nextNode = foundNode.next;
+      foundNode.next = newNode;
+      newNode.next = nextNode;
+      newNode.prev = foundNode;
+      nextNode.prev = newNode;
+    } else {
+      return 'Target node not found';
     }
-    foundNode.next = newNode;
-    newNode.next = nextNode;
-    newNode.prev = foundNode;
-    nextNode.prev = newNode;
   };
   // insert takes a targetNodeValue and newValue
     // create newNode with value
