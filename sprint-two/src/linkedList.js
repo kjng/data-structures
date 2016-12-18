@@ -64,18 +64,37 @@ var LinkedList = function() {
     return deletedNodeValue;
   };
 
-  // search takes target, node
-    // set node to be node or list.head
-    // if nodeValue is target
-      // return node
-    // else if nodeNext
-      // return listSearch(target, node.next)
-    // else return undefined
-
+  list.insert = function(targetNodeValue, newValue) {
+    var newNode = Node(newValue);
+    var foundNode, nextNode;
+    var search = function(target, node) {
+      node = node || list.head;
+      if (node.value === target) {
+        foundNode = node;
+        return;
+      } else if (node.next) {
+        search(target, node.next);
+      }
+    };
+    search(targetNodeValue);
+    if (foundNode.next) {
+      nextNode = foundNode.next;
+    }
+    foundNode.next = newNode;
+    newNode.next = nextNode;
+    newNode.prev = foundNode;
+    nextNode.prev = newNode;
+  };
   // insert takes a targetNodeValue and newValue
     // create newNode with value
     // look through list to find targetNodeValue
-      // if found, save node
+      // search takes target, node
+        // set node to be node or list.head
+        // if nodeValue is target
+          // save node
+          // break
+        // else if nodeNext
+          // return listSearch(target, node.next)
         // save node's next node
     // set targetNode's next value to newNode
     // set newNode's next value to be targetNode's next old value
